@@ -24,13 +24,21 @@
 </div>
 
 ## Table of Contents
+- [Live Demo](#live-demo)
 - [About](#about)
 - [Features](#features)
+- [Architecture](#architecture)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [API Reference](#api-reference)
 - [Contributing](#contributing)
 - [License](#license)
+
+## Live Demo
+
+🚀 **[Check out the live application here!](https://segfault-frontend-1.netlify.app)**
+
+Experience SEGFAULT in action - solve problems, chat with AI, and see real-time code execution.
 
 ## About
 
@@ -61,6 +69,44 @@ Perfect for technical interview preparation and competitive programming practice
 - **Video Upload System** - Cloudinary-powered video management with progress tracking
 - **Role-Based Access Control** - Secure endpoint protection
 - **Centralized Content Management** - Single interface for platform content
+
+## Architecture
+
+### Authentication Flow
+```mermaid
+graph LR
+    A[User Login] --> B[JWT Generation]
+    B --> C[HttpOnly Cookie]
+    C --> D[Redis Verification]
+    D --> E[Protected Routes]
+    E --> F[Logout Blacklisting]
+```
+
+### Code Execution Pipeline
+```mermaid
+graph TD
+    A[Monaco Editor] --> B[Submit Code]
+    B --> C[Judge0 API]
+    C --> D[Batch Processing]
+    D --> E[Result Analysis]
+    E --> F[Database Storage]
+    F --> G[User Feedback]
+```
+
+### AI Tutor Integration
+```mermaid
+graph LR
+    A[User Query] --> B[Context Assembly]
+    B --> C[Gemini API]
+    C --> D[AI Response]
+    D --> E[Chat Interface]
+```
+
+The system architecture ensures:
+- **Secure Authentication** - JWT tokens with Redis blacklisting for instant logout
+- **Efficient Code Execution** - Judge0 API handles batch processing and result polling
+- **Context-Aware AI** - Gemini receives full problem context for relevant tutoring
+- **Scalable Design** - Separated concerns with clear data flow
 
 ## Tech Stack
 
